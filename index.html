@@ -23,7 +23,7 @@
 
       /* Additional styling for the input and button */
       #search-input {
-        width: 70%;
+        width: 60%;
         height: 30%;
         padding: 15px; /* Increased padding for height */
         margin-right: 10px;
@@ -32,7 +32,7 @@
       }
 
       #search-button {
-        width: 20%;
+        width: 30%;
         padding: 15px 20px; /* Increased padding for height */
         border: none;
         background-color: #007bff;
@@ -50,14 +50,18 @@
         }
         /* Display input and button on the same line */
         #search-input {
-          width: 60%;
+          width: 50%;
           height: 40%;
+          padding: 100px !important;
+
           display: inline-block;
         }
 
         #search-button {
-          width: 30%;
+          width: 40%;
           height: 40%;
+          padding-top: 40% !important;
+          padding-bottom: 40% !important;
           display: inline-block;
         }
       }
@@ -68,11 +72,26 @@
     <div id="map" style="height: 100vh; width: 100%"></div>
     <div id="search-container">
       <input
+        style="
+          padding-top: 7% !important;
+          padding-bottom: 7% !important;
+          font-size: 2.2rem;
+        "
         type="text"
         id="search-input"
         placeholder="Enter location title..."
       />
-      <button id="search-button" type="submit">Search</button>
+      <button
+        id="search-button"
+        type="submit"
+        style="
+          padding-top: 7% !important;
+          padding-bottom: 7% !important;
+          font-size: 2.2rem;
+        "
+      >
+        Search
+      </button>
     </div>
 
     <script>
@@ -96,7 +115,7 @@
 
         // Create a new Google Map object
         map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 10, // Initial zoom level
+          zoom: 18, // Initial zoom level
           center: center, // Center the map at the defined coordinates
           styles: silverMapStyle,
         });
@@ -118,8 +137,8 @@
           const markerData = await fetchMarkerData();
           const customMarkerIcon = {
             url: "image.png", // Replace with the actual URL
-            size: new google.maps.Size(70, 70), // Size of the icon image
-            scaledSize: new google.maps.Size(70, 70), // Size to display on the map
+            size: new google.maps.Size(200, 200), // Size of the icon image
+            scaledSize: new google.maps.Size(200, 200), // Size to display on the map
             origin: new google.maps.Point(0, 0), // Origin of the icon (usually top-left)
           };
 
@@ -134,7 +153,7 @@
 
             markers.push(marker);
 
-            var infoMarker = `<div><img src="${location.img}" alt="Image" width="200" height="150"><h3>${location.title}</h3><p>${location.desc}</p></div>`;
+            var infoMarker = `<div><img src="${location.img}" alt="Image" width="300" height="200"><h1>${location.title}</h1><p>${location.desc}</p></div>`;
             const infowindow = new google.maps.InfoWindow({
               content: infoMarker,
             });
