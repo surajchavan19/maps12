@@ -35,7 +35,7 @@
         width: 30%;
         padding: 15px 20px; /* Increased padding for height */
         border: none;
-        background-color: #007bff;
+        background: rgb(238, 84, 74);
         color: #fff;
         border-radius: 5px;
         cursor: pointer;
@@ -152,8 +152,12 @@
             });
 
             markers.push(marker);
-
-            var infoMarker = `<div><img src="${location.img}" alt="Image" width="300" height="200"><h1>${location.title}</h1><p>${location.desc}</p></div>`;
+            loc =
+              "https://www.google.com/maps/dir//" +
+              location.lat +
+              "," +
+              location.lng;
+            var infoMarker = `<div style="border: 1px solid black; padding: 5%"><img src="${location.img}" alt="Image" width="300" height="200"><h1>${location.title}</h1><p>${location.desc}</p><a  href="${loc}" style="text-align: center !important"> <button style="padding: 3% 3% 3% 3%;font-size: 1.5rem;background: rgb(238,84,74);color:white;border: 0;width: 100% !important">Get Directions</button></a>'</div>`;
             const infowindow = new google.maps.InfoWindow({
               content: infoMarker,
             });
